@@ -1,0 +1,85 @@
+autostart = False
+version = 0.8.3
+[127.0.0.1:7200]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10000
+    [[2691]]
+        image = D:\tomgro\c2691-adventerprisek9-mz.124-5a.image
+        idlepc = 0x60aaf1b8
+        sparsemem = True
+        ghostios = True
+    [[ROUTER Receiver1]]
+        model = 2691
+        console = 2012
+        aux = 2512
+        cnfg = configs\Receiver1.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R2 s0/1
+        x = 3.0
+        y = 237.0
+        z = 1.0
+        hx = -0.5
+        hy = 48.0
+    [[ROUTER Receiver2]]
+        model = 2691
+        console = 2013
+        aux = 2513
+        cnfg = configs\Receiver2.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R2 s0/0
+        x = 216.0
+        y = -258.0
+        z = 1.0
+    [[ROUTER R2]]
+        model = 2691
+        console = 2011
+        aux = 2511
+        cnfg = configs\R2.cfg
+        wic0/0 = WIC-2T
+        s0/0 = Receiver2 s0/0
+        s0/1 = Receiver1 s0/0
+        f0/0 = Server f0/0
+        x = -7.0
+        y = -89.0
+        z = 1.0
+    [[ROUTER Server]]
+        model = 2691
+        console = 2010
+        aux = 2510
+        cnfg = configs\Server.cfg
+        f0/0 = R2 f0/0
+        x = -243.0
+        y = -91.0
+        z = 1.0
+[GNS3-DATA]
+    configs = configs
+    [[NOTE 1]]
+        text = "s0/0"
+        x = 2.89772702529
+        y = 48.3410926454
+        interface = Receiver2 s0/0
+    [[NOTE 2]]
+        text = "s0/0"
+        x = 29.833957932
+        y = -17.874505359
+        interface = Receiver1 s0/0
+    [[NOTE 3]]
+        text = "s0/0"
+        x = 63.1022729747
+        y = -4.34109264545
+        interface = R2 s0/0
+    [[NOTE 4]]
+        text = "s0/1"
+        x = 36.166042068
+        y = 61.874505359
+        interface = R2 s0/1
+    [[NOTE 5]]
+        text = "f0/0"
+        x = -36.8910913521
+        y = -2.05028293864
+        interface = R2 f0/0
+    [[NOTE 6]]
+        text = "f0/0"
+        x = 72.8910913521
+        y = 19.0502829386
+        interface = Server f0/0

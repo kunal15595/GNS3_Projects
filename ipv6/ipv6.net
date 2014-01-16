@@ -1,0 +1,56 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = ipv6_working
+    udp = 10000
+    [[7200]]
+        image = D:\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.124-2.T.bin
+        ram = 128
+        idlepc = 0x606e9e60
+        ghostios = True
+    [[ROUTER R1]]
+        console = 2000
+        cnfg = ipv6_configs\R1.cfg
+        slot1 = PA-8T
+        s1/0 = R2 s1/0
+        slot2 = PA-2FE-TX
+        f2/0 = SW1 3
+        x = -196.0
+        y = -61.0
+    [[ROUTER R2]]
+        console = 2001
+        cnfg = ipv6_configs\R2.cfg
+        slot1 = PA-8T
+        s1/0 = R1 s1/0
+        x = 111.0
+        y = -57.0
+[127.0.0.1:7201]
+    workingdir = ipv6_working
+    udp = 10100
+    [[7200]]
+        image = D:\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.124-2.T.bin
+        ram = 128
+        idlepc = 0x606e9e60
+        ghostios = True
+    [[ROUTER R4]]
+        console = 2004
+        cnfg = ipv6_configs\R4.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = SW1 2
+        x = -98.0
+        y = 166.0
+    [[ETHSW SW1]]
+        1 = access 1 R3 f1/0
+        2 = access 1 R4 f1/0
+        3 = access 1 R1 f2/0
+        x = -199.5
+        y = 48.0
+    [[ROUTER R3]]
+        console = 2003
+        cnfg = ipv6_configs\R3.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = SW1 1
+        x = -289.0
+        y = 166.0
+[GNS3-DATA]
+    configs = ipv6_configs
+    workdir = ipv6_working

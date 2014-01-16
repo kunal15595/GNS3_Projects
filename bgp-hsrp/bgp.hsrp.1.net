@@ -1,0 +1,234 @@
+autostart = False
+[127.0.0.1:7202]
+    workingdir = .
+    udp = 10200
+    [[7200]]
+        image = E:\Download\dynamips-0.2.8-RC2-cygwin\c7200-advsecurityk9-mz.124-11.T.bin
+        ram = 196
+        idlepc = 0x61272d40
+        ghostios = True
+    [[ROUTER CE2]]
+        console = 2013
+        ram = 128
+        cnfg = CE2.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = SW1 2
+        f1/1 = PE2 f1/1
+        x = 155.090403796
+        y = 123.663996924
+    [[ROUTER CE1]]
+        console = 2016
+        cnfg = CE1.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = SW1 1
+        f1/1 = PE1 f1/1
+        x = -225.955410847
+        y = 122.249783362
+    [[ETHSW SW3]]
+        1 = access 1 R8 f1/1
+        2 = access 1 R10 f1/0
+        x = -697.35194719
+        y = -163.078210487
+    [[ETHSW SW2]]
+        1 = access 1 R6 f1/1
+        x = 595.239248818
+        y = -160.249783363
+[qemu 127.0.0.1:10525]
+    workingdir = .
+    udp = 20000
+    qemupath = E:\Download\qemu-0.12.5.patched.win32\Qemu\qemu.exe
+    qemuimgpath = E:\Download\qemu-0.12.5.patched.win32\Qemu\qemu-img.exe
+    [[QemuDevice]]
+        image = E:\Download\linux-microcore-2.11.5.img
+        ram = 32
+        netcard = e1000
+        kqemu = True
+        options = -no-acpi
+    [[QEMU QEMU1]]
+        e0 = SW1 3
+        x = -29.5
+        y = 246.5
+[127.0.0.1:7200]
+    workingdir = .
+    udp = 10000
+    [[7200]]
+        image = E:\Download\dynamips-0.2.8-RC2-cygwin\c7200-advsecurityk9-mz.124-11.T.bin
+        ram = 128
+        idlepc = 0x61273914
+        ghostios = True
+    [[ROUTER PE1]]
+        console = 2015
+        cnfg = PE1.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = PE2 f1/0
+        f1/1 = CE1 f1/1
+        slot2 = PA-2FE-TX
+        f2/0 = R8 f1/0
+        x = -222.899494937
+        y = -167.0
+    [[ROUTER PE2]]
+        console = 2008
+        cnfg = PE2.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = PE1 f1/0
+        f1/1 = CE2 f1/1
+        slot2 = PA-2FE-TX
+        f2/0 = R6 f1/0
+        f2/1 = CE3 f1/0
+        x = 155.870057685
+        y = -165.0
+[127.0.0.1:7201]
+    workingdir = .
+    udp = 10100
+    [[7200]]
+        image = E:\Download\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.124-2.T.bin
+        ram = 128
+        disk0 = 48
+        idlepc = 0x602558f4
+        ghostios = True
+        npe = npe-200
+    [[ROUTER R6]]
+        console = 2013
+        disk0 = 64
+        npe = npe-400
+        slot1 = PA-2FE-TX
+        f1/0 = PE2 f2/0
+        f1/1 = SW2 1
+        cnfg = R6.cfg
+        x = 420.962553521
+        y = -167.663996924
+    [[ROUTER R10]]
+        console = 2014
+        slot1 = PA-2FE-TX
+        f1/0 = SW3 2
+        cnfg = R10.cfg
+        x = -694.85194719
+        y = -27.6568542495
+    [[ROUTER R8]]
+        console = 2010
+        slot1 = PA-2FE-TX
+        f1/0 = PE1 f2/0
+        f1/1 = SW3 1
+        cnfg = R8.cfg
+        x = -489.790980646
+        y = -169.078210487
+    [[ETHSW SW1]]
+        1 = access 1 CE1 f1/0
+        2 = access 1 CE2 f1/0
+        3 = access 1 QEMU1 e0
+        4 = access 1 Monitor f1/0
+        x = -35.5
+        y = 129.0
+[127.0.0.1:7203]
+    workingdir = .
+    udp = 10300
+    [[7200]]
+        image = E:\Download\dynamips-0.2.8-RC2-cygwin\c7200-advsecurityk9-mz.124-11.T.bin
+        ram = 128
+        idlepc = 0x61272d40
+        ghostios = True
+    [[ROUTER Monitor]]
+        console = 2017
+        slot1 = PA-2FE-TX
+        f1/0 = SW1 4
+        cnfg = Monitor.cfg
+        x = 112.663996924
+        y = 255.185858225
+    [[ROUTER CE3]]
+        console = 2009
+        slot1 = PA-2FE-TX
+        f1/0 = PE2 f2/1
+        f1/1 = SW4 1
+        cnfg = CE3.cfg
+        x = 419.548339959
+        y = -297.771644663
+    [[ETHSW SW4]]
+        1 = access 1 CE3 f1/1
+        x = 595.239248818
+        y = -291.771644663
+[GNS3-DATA]
+    configs = .
+    workdir = .
+    m11 = 0.707106781187
+    m22 = 0.707106781187
+    [[NOTE 1]]
+        text = NATIVE IPv6
+        x = -719.834703247
+        y = -225.546247918
+    [[NOTE 2]]
+        text = 6to4 Tunneler
+        x = 405.879292401
+        y = -110.994949366
+    [[NOTE 3]]
+        text = 6to4 Relay
+        x = -492.146319706
+        y = -105.338095117
+    [[NOTE 4]]
+        text = NETWORK: 2.2.2.0/24\nBGP AS 2
+        x = -292.742207412
+        y = -317.470129472
+    [[NOTE 5]]
+        text = NETWORK: 1.1.1.0/28\nBGP AS 1
+        x = -298.399061661
+        y = 282.156420973
+    [[NOTE 6]]
+        text = NETWORK 3.3.3.0/24\nBGP AS 3
+        x = 84.8528137423
+        y = -321.71277016
+    [[NOTE 7]]
+        text = 1
+        x = -4.5
+        y = 16.0000000002
+        interface = SW2 1
+    [[NOTE 8]]
+        text = f2/1
+        x = 85.4541123427
+        y = -14.6584316319
+        interface = PE2 f2/1
+    [[NOTE 9]]
+        text = f2/0
+        x = 72.9993056576
+        y = 22.2356839238
+        interface = PE2 f2/0
+    [[NOTE 10]]
+        text = f1/1
+        x = 73.0
+        y = 21.9999999998
+        interface = R6 f1/1
+    [[NOTE 11]]
+        text = f1/0
+        x = -6.99930565757
+        y = 21.7643160762
+        interface = R6 f1/0
+    [[SHAPE 1]]
+        type = rectangle
+        x = -733.976838871
+        y = -239.002092041
+        width = 369.109739779
+        height = 305.470129472
+        fill_color = "#cffffa"
+        z = -2.0
+    [[SHAPE 2]]
+        type = rectangle
+        x = 74.9533188057
+        y = -330.925973595
+        width = 222.031529292
+        height = 258.801081914
+        fill_color = "#e6ab97"
+        z = -2.0
+    [[SHAPE 3]]
+        type = rectangle
+        x = -304.055915911
+        y = -332.340187158
+        width = 224.859956418
+        height = 260.215295477
+        fill_color = "#fffdaa"
+        z = -2.0
+    [[SHAPE 4]]
+        type = rectangle
+        x = -308.298556597
+        y = 15.5563491861
+        width = 605.283404696
+        height = 319.612265096
+        fill_color = "#b9b4ff"
+        z = -2.0

@@ -1,0 +1,189 @@
+autostart = False
+version = 0.8.4
+[127.0.0.1:7200]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10000
+    [[2691]]
+        image = C:\Users\xx\GNS3\Images\c2691-adventerprisek9-mz.124-5a.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER HQ]]
+        model = 2691
+        console = 2001
+        aux = 2501
+        cnfg = configs\HQ.cfg
+        f0/0 = SW1 1
+        x = -530.0
+        y = -95.0
+        z = 1.0
+        hx = 16.0
+        hy = 17.0
+    [[ROUTER HQ-B]]
+        model = 2691
+        console = 2003
+        aux = 2503
+        cnfg = configs\HQ-B.cfg
+        f0/0 = ISP f0/1
+        f0/1 = SW1 3
+        x = -294.0
+        y = 19.1346652053
+        z = 1.0
+        hx = 6.5
+        hy = 15.0
+    [[ROUTER SITE-A]]
+        model = 2691
+        console = 2005
+        aux = 2505
+        cnfg = configs\SITE-A.cfg
+        wic0/0 = WIC-2T
+        s0/0 = ISP s0/0
+        x = 201.0
+        y = -321.134665205
+        z = 1.0
+    [[ROUTER SITE-B]]
+        model = 2691
+        console = 2006
+        aux = 2506
+        cnfg = configs\SITE-B.cfg
+        wic0/0 = WIC-2T
+        s0/0 = ISP s0/1
+        x = 221.0
+        y = 166.865334795
+        z = 1.0
+        hx = 2.0
+        hy = 15.0
+    [[ROUTER ISP]]
+        model = 2691
+        console = 2004
+        aux = 2504
+        cnfg = configs\ISP.cfg
+        wic0/0 = WIC-2T
+        s0/0 = SITE-A s0/0
+        s0/1 = SITE-B s0/0
+        f0/0 = HQ-P f0/0
+        f0/1 = HQ-B f0/0
+        symbol = cloud
+        x = -85.0
+        y = -118.0
+        z = 1.0
+        hx = 59.0
+        hy = 18.0
+    [[ROUTER HQ-P]]
+        model = 2691
+        console = 2002
+        aux = 2502
+        cnfg = configs\HQ-P.cfg
+        f0/0 = ISP f0/0
+        f0/1 = SW1 2
+        x = -294.0
+        y = -206.865334795
+        z = 1.0
+        hx = 8.0
+        hy = 18.0
+    [[ETHSW SW1]]
+        1 = access 1 HQ f0/0
+        2 = access 1 HQ-P f0/1
+        3 = access 1 HQ-B f0/1
+        x = -393.5
+        y = -87.0
+        z = 1.0
+        hx = 7.0
+        hy = 8.0
+[GNS3-DATA]
+    configs = configs
+    [[NOTE 1]]
+        text = "Location: Site B"
+        x = 204.0
+        y = 100.5
+    [[NOTE 2]]
+        text = "Location: Site A"
+        x = 178.0
+        y = -383.5
+    [[NOTE 3]]
+        text = "Location: Headquaters"
+        x = -490.0
+        y = -269.5
+    [[NOTE 4]]
+        text = "Access rules:\n\nSite 1 and 2 can access web server 10.10.0.1 but only using http not https.\nSite 1 can also access web server 10.11.0.1.\nEnd user on site 1 10.1.0.1 can additionaly access FTP server 10.10.0.4.\n\nAllow TCP traffic between Site 1 10.1.0.32/28 and 10.11.0.128/29.\nAllow UDP traffic on ports 444 and 555 between 10.1.0.128/29 and 10.10.0.160/27.\nAllow outgoing connections from HQ, Site 1 and Site 2 from only local IP addresses.\n\nAll other scavanger traffic will be denied. "
+        x = -582.0
+        y = 119.5
+    [[NOTE 5]]
+        text = "f0/1"
+        x = -48.0718838202
+        y = 23.3591358495
+        interface = HQ-P f0/1
+    [[NOTE 6]]
+        text = "f0/0"
+        x = 78.7809932758
+        y = 10.7212764637
+        interface = HQ-P f0/0
+    [[NOTE 7]]
+        text = "f0/0"
+        x = -22.7809932758
+        y = -31.7212764637
+        interface = ISP f0/0
+    [[NOTE 8]]
+        text = "s0/1"
+        x = 77.878777005
+        y = 66.5943355752
+        interface = ISP s0/1
+    [[NOTE 9]]
+        text = "s0/0"
+        x = 73.6838352976
+        y = -31.8789811977
+        interface = ISP s0/0
+    [[NOTE 10]]
+        text = "f0/1"
+        x = -5.73967188574
+        y = 72.9631804951
+        interface = ISP f0/1
+    [[NOTE 11]]
+        text = "s0/0"
+        x = 8.12122299501
+        y = -29.5943355752
+        interface = SITE-B s0/0
+    [[NOTE 12]]
+        text = "s0/0"
+        x = 5.31616470241
+        y = 42.8789811977
+        interface = SITE-A s0/0
+    [[NOTE 13]]
+        text = "f0/1"
+        x = -44.5793610817
+        y = -19.0177596627
+        interface = HQ-B f0/1
+    [[NOTE 14]]
+        text = "f0/0"
+        x = 68.7396718857
+        y = 4.03681950489
+        interface = HQ-B f0/0
+    [[NOTE 15]]
+        text = "f0/0"
+        x = 72.9073477073
+        y = 24.7209555255
+        interface = HQ f0/0
+    [[SHAPE 1]]
+        type = rectangle
+        x = 157.0
+        y = 97.0
+        width = 200.0
+        height = 165.0
+        fill_color = "#c7c574"
+        z = -1.0
+    [[SHAPE 2]]
+        type = rectangle
+        x = 150.0
+        y = -392.0
+        width = 200.0
+        height = 165.0
+        fill_color = "#c78c24"
+        z = -1.0
+    [[SHAPE 3]]
+        type = rectangle
+        x = -571.0
+        y = -283.0
+        width = 372.0
+        height = 374.0
+        fill_color = "#93ca45"
+        z = -1.0

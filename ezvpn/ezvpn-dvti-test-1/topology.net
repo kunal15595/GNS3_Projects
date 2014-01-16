@@ -1,0 +1,70 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = C:\Users\TOMAS~1.GRY\AppData\Local\Temp
+    udp = 10000
+[127.0.0.1:7201]
+    workingdir = C:\Users\TOMAS~1.GRY\AppData\Local\Temp
+    udp = 10100
+    [[2691]]
+        image = C:\Users\tomas.grygier\Desktop\c2691-advipservicesk9-mz124-15.bin
+        idlepc = 0x6024d8c8
+        ghostios = True
+    [[ROUTER EZVPNClient2]]
+        model = 2691
+        console = 2008
+        cnfg = configs\EZVPNClient2.cfg
+        f0/0 = SW1 1
+        x = -278.0
+        y = 58.0
+    [[ROUTER EZVPNClient]]
+        model = 2691
+        console = 2002
+        cnfg = configs\EZVPNClient.cfg
+        f0/0 = SW1 2
+        x = -282.0
+        y = -100.0
+    [[ETHSW SW1]]
+        1 = access 1 EZVPNClient2 f0/0
+        2 = access 1 EZVPNClient f0/0
+        3 = access 1 EZVPNServer f0/0
+        x = -120.5
+        y = -96.0
+    [[ROUTER EZVPNServer]]
+        model = 2691
+        console = 2004
+        cnfg = configs\EZVPNServer.cfg
+        f0/0 = SW1 3
+        x = 63.0
+        y = -101.0
+[GNS3-DATA]
+    configs = configs
+    [[NOTE 1]]
+        text = 2
+        x = -4.49702591174
+        y = 16.4877686087
+        interface = SW1 2
+    [[NOTE 2]]
+        text = 1
+        x = 6.59040194822
+        y = 43.644803137
+        interface = SW1 1
+    [[NOTE 3]]
+        text = f0/0
+        x = 61.9095980518
+        y = -5.64480313702
+        interface = EZVPNClient2 f0/0
+    [[NOTE 4]]
+        text = 3
+        x = 75.499389532
+        y = 16.2209911024
+        interface = SW1 3
+    [[NOTE 5]]
+        text = f0/0
+        x = 72.9970259117
+        y = 21.5122313913
+        interface = EZVPNClient f0/0
+    [[NOTE 6]]
+        text = f0/0
+        x = -6.999389532
+        y = 21.7790088976
+        interface = EZVPNServer f0/0

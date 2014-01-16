@@ -1,0 +1,72 @@
+# ROUTE-MAP
+
+route-map <ROUTE-MAP-NAME> permit 10
+ match ipv6 address prefix-list <PREFIX-LIST-NAME>
+ set <PARAMETER>
+!
+route-map <ROUTE-MAP-NAME> permit 20
+ match <ANY PARAMETER>
+ set <PARAMETER>
+!
+.
+
+examples of MATCH clause
+
+match cummunity <COMMUNITY-ID>
+match ipv6 address prefix-list <PREFIX-LIST-NAME>
+
+examples of SET command
+
+ set local-preference 95
+ set as-prepend 1000 1000
+ set community 100:30
+
+!
+
+http://www.cisco.com/en/US/tech/tk365/technologies_tech_note09186a008047915d.shtml
+
+# COMMUNITIES
+
+ip community-list <NUMBER> permit <COMMUNITY-TO-MATCH>
+
+
+# PREFIX-LIST
+
+ipv6 prefix-list <PREFIX-LIST-NAME> seq <NUMBER> permit <::/:>
+
+
+# FILTER-LIST
+
+neighbor <NEIGHBOUR-IP> filter-list <FILTER-LIST-NAME> <in/out>
+
+
+# AS PATH ACCESS
+
+ip as-path access-list <ID> permit <REGULAR-EXPRESSION>
+
+
+# BGP CONFIGURATION
+
+router bgp <LOCAL-AS-NUMBER>
+ bgp router-id <ID>
+ 
+ address-family ipv6
+ neighbor <NEIGHBOUR-IP-ADDRESS> remote-as <REMOTE-AS-NUMBER>
+ network <NETWORK-PREFIX>
+
+
+# COMMUNITY SUPPORT 
+
+ip bgp-community new-format
+router bgp <LOCAL-AS-NUMBER>
+ neighbor <NEIGHBOR-IP> send-community
+ 
+ 
+# OSPFv3
+
+interface ATM0
+ ipv6 address <IP-ADDRESS>
+ ipv6 ospf <PROCESS-ID> area <AREA-ID>
+ 
+ipv6 router ospf <PROCESS-ID>
+ router-id <ROUTER-ID>

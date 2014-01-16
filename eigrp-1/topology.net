@@ -1,0 +1,171 @@
+autostart = False
+version = 0.8.4
+[127.0.0.1:7200]
+    workingdir = c:\users\xx\appdata\local\temp\GNS3_feta7c\working
+    udp = 10000
+    [[2691]]
+        image = C:\Users\xx\GNS3\Images\c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R4]]
+        model = 2691
+        console = 2004
+        aux = 2504
+        cnfg = configs\R4.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R1 s0/1
+        s0/1 = R6 s0/1
+        x = -79.0
+        y = -211.0
+        z = 1.0
+        hx = 18.0
+        hy = 17.5
+    [[ROUTER R1]]
+        model = 2691
+        console = 2001
+        aux = 2501
+        cnfg = configs\R1.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R2 s0/0
+        s0/1 = R4 s0/0
+        f0/0 = R5 f0/0
+        x = -405.0
+        y = -213.0
+        z = 1.0
+        hx = 17.5
+        hy = 18.0
+    [[ROUTER R2]]
+        model = 2691
+        console = 2002
+        aux = 2502
+        cnfg = configs\R2.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R1 s0/0
+        s0/1 = R3 s0/0
+        x = -195.0
+        y = -371.865334795
+        z = 1.0
+        hx = 19.5
+        hy = 17.5
+    [[ROUTER R3]]
+        model = 2691
+        console = 2003
+        aux = 2503
+        cnfg = configs\R3.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R2 s0/1
+        s0/1 = R6 s0/0
+        x = 32.0
+        y = -371.865334795
+        z = 1.0
+        hx = 17.0
+        hy = 18.5
+[127.0.0.1:7201]
+    workingdir = c:\users\xx\appdata\local\temp\GNS3_feta7c\working
+    udp = 10100
+    [[2691]]
+        image = C:\Users\xx\GNS3\Images\c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R5]]
+        model = 2691
+        console = 2005
+        aux = 2505
+        cnfg = configs\R5.cfg
+        f0/0 = R1 f0/0
+        f0/1 = R6 f0/0
+        x = -73.0
+        y = -54.1346652053
+        z = 1.0
+        hx = 17.5
+        hy = 17.0
+    [[ROUTER R6]]
+        model = 2691
+        console = 2006
+        aux = 2506
+        cnfg = configs\R6.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R3 s0/1
+        s0/1 = R4 s0/1
+        f0/0 = R5 f0/1
+        x = 271.0
+        y = -203.134665205
+        z = 1.0
+        hx = 17.0
+        hy = 17.0
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.0
+    m22 = 1.0
+    [[NOTE 1]]
+        text = "f0/0"
+        x = -22.351644875
+        y = 43.0549435875
+        interface = R6 f0/0
+    [[NOTE 2]]
+        text = "s0/1"
+        x = -57.4760573023
+        y = -0.116221634139
+        interface = R6 s0/1
+    [[NOTE 3]]
+        text = "s0/0"
+        x = -9.65880593339
+        y = -29.8128800795
+        interface = R6 s0/0
+    [[NOTE 4]]
+        text = "f0/1"
+        x = 56.351644875
+        y = -29.5549435875
+        interface = R5 f0/1
+    [[NOTE 5]]
+        text = "f0/0"
+        x = -52.3934319944
+        y = 2.34606163865
+        interface = R5 f0/0
+    [[NOTE 6]]
+        text = "s0/1"
+        x = 76.9760573023
+        y = -14.3837783659
+        interface = R4 s0/1
+    [[NOTE 7]]
+        text = "s0/0"
+        x = -51.9397704952
+        y = 26.6942499388
+        interface = R4 s0/0
+    [[NOTE 8]]
+        text = "s0/1"
+        x = 71.6588059334
+        y = 19.8128800795
+        interface = R3 s0/1
+    [[NOTE 9]]
+        text = "s0/0"
+        x = -43.3547147243
+        y = 28.4061289231
+        interface = R3 s0/0
+    [[NOTE 10]]
+        text = "s0/1"
+        x = 64.3547147243
+        y = -12.9061289231
+        interface = R2 s0/1
+    [[NOTE 11]]
+        text = "s0/0"
+        x = 2.98231350874
+        y = 48.4374449921
+        interface = R2 s0/0
+    [[NOTE 12]]
+        text = "f0/0"
+        x = 39.8934319944
+        y = 47.1539383613
+        interface = R1 f0/0
+    [[NOTE 13]]
+        text = "s0/1"
+        x = 82.4397704952
+        y = -8.69424993883
+        interface = R1 s0/1
+    [[NOTE 14]]
+        text = "s0/0"
+        x = 22.5176864913
+        y = -39.9374449921
+        interface = R1 s0/0

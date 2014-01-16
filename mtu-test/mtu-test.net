@@ -1,0 +1,34 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = mtu-test_working
+    udp = 10000
+    [[7200]]
+        image = D:\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.124-2.T.bin
+        ram = 128
+        idlepc = 0x606e9e60
+        ghostios = True
+    [[ROUTER R1]]
+        console = 2000
+        slot1 = PA-8T
+        s1/0 = R2 s1/0
+        cnfg = mtu-test_configs\R1.cfg
+        x = -262.0
+        y = 40.0
+    [[ROUTER R2]]
+        console = 2001
+        slot1 = PA-8T
+        s1/0 = R1 s1/0
+        s1/1 = R3 s1/0
+        cnfg = mtu-test_configs\R2.cfg
+        x = -102.0
+        y = -57.0
+    [[ROUTER R3]]
+        console = 2002
+        slot1 = PA-8T
+        s1/0 = R2 s1/1
+        cnfg = mtu-test_configs\R3.cfg
+        x = 36.0
+        y = 54.0
+[GNS3-DATA]
+    configs = mtu-test_configs
+    workdir = mtu-test_working

@@ -1,0 +1,164 @@
+autostart = False
+version = 0.8.4
+[127.0.0.1:7202]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10200
+[127.0.0.1:7203]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10300
+    [[7200]]
+        image = C:\Users\xx\GNS3\Images\c7200-adventerprisek9-mz.124-22.T.image
+        idlepc = 0x614a241c
+        sparsemem = True
+    [[ROUTER EZVPN-Server]]
+        console = 2007
+        aux = 2507
+        cnfg = configs\EZVPN-Server.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = SW1 3
+        x = 231.0
+        y = 6.0
+        z = 1.0
+        hx = -15.5
+        hy = 41.0
+[127.0.0.1:7201]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10100
+    [[2691]]
+        image = C:\Users\xx\GNS3\Images\c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER LNS]]
+        model = 2691
+        ghostios = False
+        console = 2001
+        aux = 2501
+        cnfg = configs\LNS.cfg
+        f0/0 = SW1 1
+        f0/1 = LAC f0/1
+        x = 109.0
+        y = -177.0
+        z = 1.0
+        hx = 17.5
+        hy = 20.0
+    [[ROUTER LAC]]
+        model = 2691
+        ghostios = False
+        console = 2002
+        aux = 2502
+        cnfg = configs\LAC.cfg
+        f0/0 = SW2 1
+        f0/1 = LNS f0/1
+        x = -108.0
+        y = -176.0
+        z = 1.0
+        hx = 17.5
+        hy = 19.0
+    [[ETHSW SW1]]
+        1 = access 1 LNS f0/0
+        2 = access 1 ubuntu-12.04-server e1
+        3 = access 1 EZVPN-Server f1/0
+        x = 229.5
+        y = -170.0
+        z = 1.0
+        hx = 16.0
+        hy = 10.0
+    [[ETHSW SW2]]
+        1 = access 1 LAC f0/0
+        2 = access 1 CPE1 f0/0
+        3 = access 1 VPNCPE2 f0/0
+        4 = access 1 VPNCPE3 f0/0
+        x = -204.5
+        y = -33.0
+        z = 1.0
+        hx = 14.0
+        hy = 10.0
+    [[ROUTER CPE1]]
+        model = 2691
+        console = 2005
+        aux = 2505
+        cnfg = configs\CPE1.cfg
+        f0/0 = SW2 2
+        x = -369.0
+        y = -101.0
+        z = 1.0
+        hx = 13.5
+        hy = 19.0
+[127.0.0.1:7204]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10400
+    [[2691]]
+        image = C:\Users\xx\GNS3\Images\c2691-adventerprisek9-mz.124-5a.image
+        sparsemem = True
+        ghostios = True
+    [[ROUTER VPNCPE3]]
+        model = 2691
+        console = 2009
+        aux = 2509
+        cnfg = configs\VPNCPE3.cfg
+        f0/0 = SW2 4
+        x = -218.0
+        y = 127.0
+        z = 1.0
+    [[ROUTER VPNCPE2]]
+        model = 2691
+        console = 2008
+        aux = 2508
+        cnfg = configs\VPNCPE2.cfg
+        f0/0 = SW2 3
+        x = -367.0
+        y = 52.0
+        z = 1.0
+        hx = 1.0
+        hy = 18.0
+[vbox 127.0.0.1:11525]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 20900
+    [[VBoxDevice]]
+        image = ubuntu-12.04-server
+        nics = 2
+        console_support = True
+        console_telnet_server = True
+    [[VBOX ubuntu-12.04-server]]
+        e1 = SW1 2
+        x = 232.5
+        y = -334.5
+        z = 1.0
+[GNS3-DATA]
+    configs = configs
+    [[NOTE 1]]
+        text = "Acts as RADIUS Server"
+        x = 171.0
+        y = -383.0
+    [[NOTE 2]]
+        text = "1"
+        x = -4.49872006144
+        y = 16.3199897605
+        interface = SW1 1
+    [[NOTE 3]]
+        text = "f0/0"
+        x = 15.3928987585
+        y = 50.062997942
+        interface = LAC f0/0
+    [[NOTE 4]]
+        text = "f0/1"
+        x = 72.9995752791
+        y = 21.81567016
+        interface = LAC f0/1
+    [[NOTE 5]]
+        text = "f0/1"
+        x = -35.9995752791
+        y = 23.18432984
+        interface = LNS f0/1
+    [[NOTE 6]]
+        text = "f0/0"
+        x = 62.6645098795
+        y = -10.6251247088
+        interface = LNS f0/0
+    [[SHAPE 1]]
+        type = rectangle
+        x = 168.0
+        y = -385.0
+        width = 200.0
+        height = 142.0

@@ -1,0 +1,58 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = c:\Temp
+    udp = 10000
+    [[7200]]
+        image = E:\Download\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.124-2.T.bin
+        ram = 128
+        idlepc = 0x602558f4
+        ghostios = True
+    [[ROUTER R1]]
+        console = 2000
+        slot1 = PA-2FE-TX
+        f1/0 = R2 f1/0
+        x = -308.0
+        y = -54.0
+    [[ROUTER R2]]
+        console = 2001
+        slot1 = PA-2FE-TX
+        f1/0 = R1 f1/0
+        f1/1 = R3 f1/0
+        x = -80.0
+        y = -56.0
+    [[ROUTER R3]]
+        console = 2002
+        slot1 = PA-2FE-TX
+        f1/0 = R2 f1/1
+        x = 145.0
+        y = -58.0
+[GNS3-DATA]
+    configs = dscp_tos_configs
+    [[NOTE 1]]
+        text = access-list 110 permit ip any any dscp ef\n
+        x = -80.0
+        y = 273.0
+    [[NOTE 2]]
+        text = interface FastEthernet1/0\n ip address 1.1.1.2 255.255.255.252\n duplex auto\n speed auto\n service-policy output testing\n
+        x = -81.0
+        y = 173.0
+    [[NOTE 3]]
+        text = class-map match-all test\n match access-group 110\n!\n!\npolicy-map testing\n class test\n  police cir 8000 bc 1000 be 1000\n    conform-action transmit\n    exceed-action drop\n
+        x = -79.0
+        y = 5.0
+    [[NOTE 4]]
+        text = 2.2.2.2/30
+        x = -25.0
+        y = -100.0
+    [[NOTE 5]]
+        text = 2.2.2.1/30
+        x = 93.0
+        y = -101.0
+    [[NOTE 6]]
+        text = 1.1.1.2/30
+        x = -133.0
+        y = -97.0
+    [[NOTE 7]]
+        text = 1.1.1.1/30
+        x = -255.0
+        y = -96.0

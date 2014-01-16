@@ -1,0 +1,197 @@
+autostart = False
+version = 0.8.4
+[127.0.0.1:7200]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10000
+    [[3745]]
+        image = c3745-adventerprisek9_sna-mz.124-11.XW7.image
+        idlepc = 0x60d5d994
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R4]]
+        model = 3745
+        console = 2004
+        aux = 2504
+        cnfg = configs\R4.cfg
+        slot1 = NM-4T
+        s1/0 = R3 s1/0
+        s1/1 = R2 s1/0
+        s1/2 = R1 s1/0
+        s1/3 = R1 s1/1
+        x = -482.422025984
+        y = -220.137580849
+        z = 1.0
+        hx = 17.5
+        hy = 17.0
+    [[ROUTER R5]]
+        model = 3745
+        console = 2006
+        aux = 2506
+        cnfg = configs\R5.cfg
+        slot1 = NM-4T
+        s1/0 = R1 s1/2
+        s1/1 = R1 s1/3
+        s1/2 = R2 s1/1
+        s1/3 = R3 s1/1
+        x = 32.9220259844
+        y = -227.565109648
+        z = 1.0
+        hx = 19.5
+        hy = 18.0
+    [[ROUTER R1]]
+        model = 3745
+        console = 2001
+        aux = 2501
+        cnfg = configs\R1.cfg
+        slot1 = NM-4T
+        s1/0 = R4 s1/2
+        s1/1 = R4 s1/3
+        s1/2 = R5 s1/0
+        s1/3 = R5 s1/1
+        x = -233.0
+        y = -323.0
+        z = 1.0
+        hx = 18.5
+        hy = 15.0
+    [[ROUTER R2]]
+        model = 3745
+        console = 2002
+        aux = 2502
+        cnfg = configs\R2.cfg
+        slot1 = NM-4T
+        s1/0 = R4 s1/1
+        s1/1 = R5 s1/2
+        x = -233.077974016
+        y = -221.434890352
+        z = 1.0
+        hx = 18.5
+        hy = 16.0
+    [[ROUTER R3]]
+        model = 3745
+        console = 2003
+        aux = 2503
+        cnfg = configs\R3.cfg
+        slot1 = NM-4T
+        s1/0 = R4 s1/0
+        s1/1 = R5 s1/3
+        x = -230.422025984
+        y = -111.862419151
+        z = 1.0
+        hx = 18.5
+        hy = 17.0
+[GNS3-DATA]
+    configs = configs
+    [[NOTE 1]]
+        text = "Loopback0\n2001:5::5/128"
+        x = 123.0
+        y = -249.5
+    [[NOTE 2]]
+        text = "Loopback0\n2001:4::4/128"
+        x = -642.0
+        y = -240.5
+    [[NOTE 3]]
+        text = "EIGRPv6 AS 100"
+        x = -266.0
+        y = -421.5
+    [[NOTE 4]]
+        text = "s1/1"
+        x = 68.4326547876
+        y = 3.43856215969
+        interface = R3 s1/1
+    [[NOTE 5]]
+        text = "s1/0"
+        x = -50.7876186286
+        y = 10.8814681318
+        interface = R3 s1/0
+    [[NOTE 6]]
+        text = "s1/1"
+        x = 72.8129398866
+        y = 18.1360877878
+        interface = R2 s1/1
+    [[NOTE 7]]
+        text = "s1/0"
+        x = -47.8608114465
+        y = 23.334023219
+        interface = R2 s1/0
+    [[NOTE 8]]
+        text = "s1/3"
+        x = 72.1876884845
+        y = -1.85039346887
+        interface = R1 s1/3
+    [[NOTE 9]]
+        text = "s1/2"
+        x = 72.4987456523
+        y = -20.1442833863
+        interface = R1 s1/2
+    [[NOTE 10]]
+        text = "s1/1"
+        x = -20.8659707305
+        y = 45.5205814838
+        interface = R1 s1/1
+    [[NOTE 11]]
+        text = "s1/0"
+        x = -53.7722426028
+        y = 9.89823061557
+        interface = R1 s1/0
+    [[NOTE 12]]
+        text = "s1/3"
+        x = -16.4326547876
+        y = 47.5614378403
+        interface = R5 s1/3
+    [[NOTE 13]]
+        text = "s1/2"
+        x = -74.8129398866
+        y = 3.86391221218
+        interface = R5 s1/2
+    [[NOTE 14]]
+        text = "s1/1"
+        x = -11.8098028201
+        y = -42.5618266963
+        interface = R5 s1/1
+    [[NOTE 15]]
+        text = "s1/0"
+        x = -10.4987456523
+        y = -23.8557166137
+        interface = R5 s1/0
+    [[NOTE 16]]
+        text = "s1/3"
+        x = 42.6785144751
+        y = -52.2758797474
+        interface = R4 s1/3
+    [[NOTE 17]]
+        text = "s1/2"
+        x = 43.7722426028
+        y = -32.8982306156
+        interface = R4 s1/2
+    [[NOTE 18]]
+        text = "s1/1"
+        x = 74.8608114465
+        y = 10.665976781
+        interface = R4 s1/1
+    [[NOTE 19]]
+        text = "s1/0"
+        x = 53.7876186286
+        y = 44.1185318682
+        interface = R4 s1/0
+    [[SHAPE 1]]
+        type = rectangle
+        x = 67.0
+        y = -254.0
+        width = 200.0
+        height = 100.0
+    [[SHAPE 2]]
+        type = rectangle
+        x = -649.0
+        y = -248.0
+        width = 200.0
+        height = 100.0
+    [[SHAPE 3]]
+        type = rectangle
+        x = -448.0
+        y = -439.0
+        width = 513.0
+        height = 446.0
+        fill_color = "#ffaa00"
+        border_color = "#ffffff"
+        border_width = 1
+        z = -2.0

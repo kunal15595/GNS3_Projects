@@ -1,0 +1,54 @@
+#############
+#
+# Task: Configure and prepare the network shown below for full communication between all routers.
+#	Rules for communication are given below for each router / AS.
+#
+#
+# Scope of the Lab: BGP, IPv6, route distribution and manipulation with advertised prefixes
+#
+#############
+
+
+#############
+# CE1.ASN100
+#############
+## Advertize only your own (ASN100) prefixes - route-map
+## Make all traffic coming from upstream AS to go via PE2.ASN1 - Use communities supported by ASN1
+## Prioritize all received routes from PE2.ASN1 - use weight
+## Use prefix-list to receive from PE2.ASN2 only route to 2001:2:1::/48 and default route. Phase 2 - use ORF
+## Optimize failover time - Keepalives and BFD
+## Advertise route 2001:100:BEEF::/48 only via PE1.ASN1 [OPTIONAL]
+## Prioritize route to 2001:2:100::/48 via PE1.ASN1 - choose appropriate BGP parameter (local preference, med, weight, as path prepends, ...) [OPTIONAL]
+
+
+#############
+# PE1.ASN1
+#############
+## Advertise full BGP table + default route to CE1.ASN1
+## Prepare your ASN for communities support
+
+
+#############
+# PE2.ASN1
+#############
+## Advertise default route to CE1.ASN1
+## Prepare your ASN for communities support
+## Enable ORF support for CE1.ASN1
+## Optimize failover time - Keepalives and BFD
+## Advertise to CE1.ASN100 only prefixes originated in AS1 or AS2 [OPTIONAL]
+
+
+#############
+# PE3.ASN1
+#############
+## Prepare your ASN for communities support
+## Advertize summary route to ASN2
+## Permit from PE1.ASN2 only prefixes originated in AS2. Use filter-list in
+
+
+#############
+# PE1.ASN2
+#############
+## Establish eBGP with PE3.ASN1
+## Advertise all BGP table to AS2
+## Advertise prefix 2001:2:1::/48 3 times prepended to AS1

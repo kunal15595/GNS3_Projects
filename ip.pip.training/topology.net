@@ -1,0 +1,107 @@
+autostart = False
+version = 0.8.3
+[127.0.0.1:7202]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10200
+    [[7200]]
+        image = D:\IOS\c7200-advipservicesk9-mz.124-2.T.image
+        idlepc = 0x621c0f1c
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R5]]
+        console = 2005
+        aux = 2505
+        cnfg = configs\R5.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = R4 f1/1
+        x = 216.0
+        y = -160.0
+        z = 1.0
+[127.0.0.1:7200]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10000
+    [[7200]]
+        image = D:\IOS\c7200-advipservicesk9-mz.124-2.T.image
+        idlepc = 0x621c0f1c
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R1]]
+        console = 2001
+        aux = 2501
+        cnfg = configs\R1.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = SW1 1
+        f1/1 = R2 f1/1
+        x = -257.0
+        y = 67.0
+        z = 1.0
+    [[ROUTER R2]]
+        console = 2002
+        aux = 2502
+        cnfg = configs\R2.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = SW1 2
+        f1/1 = R1 f1/1
+        slot2 = PA-2FE-TX
+        f2/0 = R4 f1/0
+        x = 19.0
+        y = 67.0
+        z = 1.0
+        hx = -1.5
+        hy = -25.0
+    [[ETHSW SW1]]
+        1 = access 1 R1 f1/0
+        2 = access 1 R2 f1/0
+        3 = access 1 R3 f1/0
+        x = -123.5
+        y = 163.0
+        z = 1.0
+[127.0.0.1:7201]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10100
+    [[7200]]
+        image = D:\IOS\c7200-advipservicesk9-mz.124-2.T.image
+        idlepc = 0x621c0f1c
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R4]]
+        console = 2004
+        aux = 2504
+        cnfg = configs\R4.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = R2 f2/0
+        f1/1 = R5 f1/0
+        x = 15.0
+        y = -155.0
+        z = 1.0
+    [[ROUTER R3]]
+        console = 2003
+        aux = 2503
+        cnfg = configs\R3.cfg
+        slot1 = PA-2FE-TX
+        f1/0 = SW1 3
+        x = -122.0
+        y = 268.0
+        z = 1.0
+        hx = 0.5
+        hy = -23.0
+[GNS3-DATA]
+    configs = configs
+    [[SHAPE 1]]
+        type = rectangle
+        x = -304.0
+        y = -204.0
+        width = 443.0
+        height = 413.0
+    [[SHAPE 2]]
+        type = rectangle
+        x = 163.0
+        y = -205.0
+        width = 161.0
+        height = 413.0
+    [[SHAPE 3]]
+        type = rectangle
+        x = -304.0
+        y = 236.0
+        width = 441.0
+        height = 100.0

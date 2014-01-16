@@ -1,0 +1,156 @@
+autostart = False
+version = 0.8.4
+[127.0.0.1:7200]
+    udp = 10000
+    [[2691]]
+        image = c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R4]]
+        model = 2691
+        console = 2004
+        aux = 2504
+        cnfg = configs\R4.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R1 s0/0
+        f0/0 = R6 f0/1
+        x = 69.0
+        y = 18.0
+        z = 1.0
+        hx = 17.5
+        hy = 18.0
+    [[ROUTER R1]]
+        model = 2691
+        console = 2001
+        aux = 2501
+        cnfg = configs\R1.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R4 s0/0
+        f0/0 = WAN 1
+        x = -374.0
+        y = -145.0
+        z = 1.0
+        hx = 17.5
+        hy = 16.0
+    [[ROUTER R2]]
+        model = 2691
+        console = 2002
+        aux = 2502
+        cnfg = configs\R2.cfg
+        f0/0 = WAN 2
+        f0/1 = R5 f0/0
+        x = 71.0
+        y = -257.0
+        z = 1.0
+        hx = 18.5
+        hy = 17.0
+    [[ROUTER R3]]
+        model = 2691
+        console = 2003
+        aux = 2503
+        cnfg = configs\R3.cfg
+        f0/0 = WAN 3
+        f0/1 = R6 f0/0
+        x = 70.0
+        y = -139.0
+        z = 1.0
+        hx = 15.5
+        hy = 17.0
+    [[ETHSW WAN]]
+        1 = access 1 R1 f0/0
+        2 = access 1 R2 f0/0
+        3 = access 1 R3 f0/0
+        symbol = cloud
+        x = -181.5
+        y = -158.0
+        z = 1.0
+        hx = 59.5
+        hy = 17.0
+[127.0.0.1:7201]
+    udp = 10100
+    [[2691]]
+        image = c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R5]]
+        model = 2691
+        console = 2005
+        aux = 2505
+        cnfg = configs\R5.cfg
+        f0/0 = R2 f0/1
+        x = 362.0
+        y = -261.0
+        z = 1.0
+        hx = 17.5
+        hy = 17.0
+    [[ROUTER R6]]
+        model = 2691
+        console = 2008
+        aux = 2508
+        f0/0 = R3 f0/1
+        f0/1 = R4 f0/0
+        cnfg = configs\R6.cfg
+        x = 367.0
+        y = -58.0
+        z = 1.0
+        hx = 16.5
+        hy = 17.0
+[GNS3-DATA]
+    configs = configs
+    [[NOTE 1]]
+        text = "f0/1"
+        x = -39.7903376682
+        y = 42.7626688762
+        interface = R6 f0/1
+    [[NOTE 2]]
+        text = "f0/0"
+        x = -43.5905528495
+        y = -24.5246962317
+        interface = R6 f0/0
+    [[NOTE 3]]
+        text = "f0/0"
+        x = -46.9962216476
+        y = 27.5497762426
+        interface = R5 f0/0
+    [[NOTE 4]]
+        text = "f0/0"
+        x = 71.7903376682
+        y = 12.2373311238
+        interface = R4 f0/0
+    [[NOTE 5]]
+        text = "s0/0"
+        x = -53.166454852
+        y = 9.02829485695
+        interface = R4 s0/0
+    [[NOTE 6]]
+        text = "f0/1"
+        x = 71.5905528495
+        y = 32.5246962317
+        interface = R3 f0/1
+    [[NOTE 7]]
+        text = "f0/0"
+        x = -44.9828783403
+        y = 25.8297694144
+        interface = R3 f0/0
+    [[NOTE 8]]
+        text = "f0/1"
+        x = 72.9962216476
+        y = 21.4502237574
+        interface = R2 f0/1
+    [[NOTE 9]]
+        text = "f0/0"
+        x = -2.14186806693
+        y = 41.1062583665
+        interface = R2 f0/0
+    [[NOTE 10]]
+        text = "s0/0"
+        x = 51.166454852
+        y = 42.9717051431
+        interface = R1 s0/0
+    [[NOTE 11]]
+        text = "f0/0"
+        x = 74.9875058563
+        y = -10.9996876464
+        interface = R1 f0/0

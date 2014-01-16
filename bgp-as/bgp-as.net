@@ -1,0 +1,105 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = .
+    udp = 10000
+    [[7200]]
+        image = D:\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.124-2.T.bin
+        ram = 128
+        idlepc = 0x606e9e60
+        ghostios = True
+    [[ROUTER PE1.ASN4]]
+        console = 2011
+        cnfg = PE1.ASN4.cfg
+        slot1 = PA-8T
+        s1/0 = PE1.ASN1 s1/1
+        s1/1 = PE1.ASN3 s1/1
+        s1/2 = PE2.ASN1 s1/1
+        x = -227.0
+        y = -218.0
+    [[ROUTER PE1.ASN2]]
+        console = 2009
+        cnfg = PE1.ASN2.cfg
+        slot1 = PA-8T
+        s1/0 = CE1.ASN10 s1/1
+        s1/1 = PE1.ASN3 s1/0
+        s1/2 = PE2.ASN1 s1/2
+        x = 162.0
+        y = -11.0
+        hx = 76.5
+        hy = 8.0
+    [[ROUTER CE1.ASN10]]
+        console = 2007
+        cnfg = CE1.ASN10.cfg
+        slot1 = PA-8T
+        s1/0 = PE1.ASN1 s1/0
+        s1/1 = PE1.ASN2 s1/0
+        x = -18.0
+        y = 177.0
+        hx = -7.5
+        hy = 47.0
+    [[ROUTER PE1.ASN1]]
+        console = 2008
+        cnfg = PE1.ASN1.cfg
+        slot1 = PA-8T
+        s1/0 = CE1.ASN10 s1/0
+        s1/1 = PE1.ASN4 s1/0
+        s1/2 = PE2.ASN1 s1/0
+        x = -231.0
+        y = -15.0
+        hx = -74.5
+        hy = 9.0
+[127.0.0.1:7201]
+    workingdir = .
+    udp = 10100
+    [[7200]]
+        image = D:\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.124-2.T.bin
+        ram = 128
+        idlepc = 0x606e9e60
+        ghostios = True
+    [[ROUTER PE1.ASN3]]
+        console = 2010
+        cnfg = PE1.ASN3.cfg
+        slot1 = PA-8T
+        s1/0 = PE1.ASN2 s1/1
+        s1/1 = PE1.ASN4 s1/1
+        x = 164.0
+        y = -211.0
+    [[ROUTER PE2.ASN1]]
+        console = 2013
+        cnfg = PE2.ASN1.cfg
+        slot1 = PA-8T
+        s1/0 = PE1.ASN1 s1/2
+        s1/1 = PE1.ASN4 s1/2
+        s1/2 = PE1.ASN2 s1/2
+        x = -32.0
+        y = -10.0
+        hx = 14.5
+        hy = -24.0
+[GNS3-DATA]
+    configs = .
+    workdir = .
+    [[NOTE 1]]
+        text = s1/1
+        x = -6.96959007708
+        y = 23.5594451161
+        interface = PE1.ASN3 s1/1
+    [[NOTE 2]]
+        text = s1/1
+        x = 29.5802381495
+        y = -17.853547256
+        interface = PE1.ASN2 s1/1
+    [[NOTE 3]]
+        text = s1/1
+        x = 40.7222044691
+        y = -29.8654744918
+        interface = PE1.ASN1 s1/1
+    [[NOTE 4]]
+        text = s1/1
+        x = 71.059772854
+        y = -1.17703938007
+        interface = CE1.ASN10 s1/1
+    [[NOTE 5]]
+        text = s1/0
+        x = -44.5149855194
+        y = -3.86185721769
+        interface = CE1.ASN10 s1/0

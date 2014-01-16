@@ -1,0 +1,244 @@
+autostart = False
+version = 0.8.4
+[127.0.0.1:7200]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10000
+    [[2691]]
+        image = C:\Users\xx\GNS3\Images\c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R4]]
+        model = 2691
+        console = 2004
+        aux = 2504
+        cnfg = configs\R4.cfg
+        wic0/0 = WIC-2T
+        wic0/1 = WIC-2T
+        s0/0 = R2 s0/0
+        s0/1 = R6 s0/0
+        s0/2 = R5 s0/2
+        x = 12.0
+        y = -248.0
+        z = 1.0
+        hx = 18.5
+        hy = 16.0
+    [[ROUTER R1]]
+        model = 2691
+        console = 2001
+        aux = 2501
+        cnfg = configs\R1.cfg
+        f0/0 = SW1 1
+        x = -469.0
+        y = -104.0
+        z = 1.0
+        hx = 15.5
+        hy = 17.0
+    [[ROUTER R2]]
+        model = 2691
+        console = 2002
+        aux = 2502
+        cnfg = configs\R2.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R4 s0/0
+        f0/0 = SW1 2
+        x = -258.0
+        y = -245.865334795
+        z = 1.0
+        hx = 15.5
+        hy = 16.0
+    [[ROUTER R3]]
+        model = 2691
+        console = 2003
+        aux = 2503
+        cnfg = configs\R3.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R5 s0/0
+        f0/0 = SW1 3
+        x = -257.0
+        y = 44.1346652053
+        z = 1.0
+        hx = 14.5
+        hy = 16.0
+    [[ETHSW SW1]]
+        1 = access 1 R1 f0/0
+        2 = access 1 R2 f0/0
+        3 = access 1 R3 f0/0
+        x = -261.5
+        y = -98.0
+        z = 1.0
+        hx = 8.0
+        hy = 8.0
+[127.0.0.1:7201]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10100
+    [[2691]]
+        image = C:\Users\xx\GNS3\Images\c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R5]]
+        model = 2691
+        console = 2005
+        aux = 2505
+        cnfg = configs\R5.cfg
+        wic0/0 = WIC-2T
+        wic0/1 = WIC-2T
+        s0/0 = R3 s0/0
+        s0/1 = R6 s0/1
+        s0/2 = R4 s0/2
+        x = 16.0
+        y = 46.8653347947
+        z = 1.0
+        hx = 17.5
+        hy = 17.0
+    [[ROUTER R6]]
+        model = 2691
+        console = 2006
+        aux = 2506
+        cnfg = configs\R6.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R4 s0/1
+        s0/1 = R5 s0/1
+        x = 277.0
+        y = -115.134665205
+        z = 1.0
+        hx = 20.5
+        hy = 16.0
+[GNS3-DATA]
+    configs = configs
+    [[NOTE 1]]
+        text = "TASKS\n--------\n\n[ ] Configure given network to support E2E connectivity between R1 a Loopback on R6\n[ ] R1-R2-R4-R6 will be preferred path\n[ ] Link between R3 and R5 will be used only if link between R2-R4 fails"
+        x = -427.0
+        y = 180.5
+    [[NOTE 2]]
+        text = "46.0.0.0/24"
+        x = 165.0
+        y = -209.5
+    [[NOTE 3]]
+        text = "56.0.0.0/24"
+        x = 182.0
+        y = -2.5
+    [[NOTE 4]]
+        text = "24.0.0.0/24"
+        x = -158.0
+        y = -264.5
+    [[NOTE 5]]
+        text = "123.0.0.0/24"
+        x = -387.0
+        y = -145.5
+    [[NOTE 6]]
+        text = "Loopback 6.0.0.6/32"
+        x = 353.0
+        y = -110.5
+    [[NOTE 7]]
+        text = "45.0.0.0/24"
+        x = 33.0
+        y = -141.5
+        rotate = 90
+    [[NOTE 8]]
+        text = "35.0.0.0/24"
+        x = -144.0
+        y = 89.5
+    [[NOTE 9]]
+        text = "HSRP Group 1"
+        x = -414.0
+        y = -238.5
+    [[NOTE 10]]
+        text = "         PPP links \nwith authentication"
+        x = 107.0
+        y = -334.5
+    [[NOTE 11]]
+        text = "Frame-relay links"
+        x = -146.0
+        y = -327.5
+    [[NOTE 12]]
+        text = "f0/0"
+        x = -24.5399999356
+        y = -33.9963548348
+        interface = R3 f0/0
+    [[NOTE 13]]
+        text = "s0/0"
+        x = 72.9232153326
+        y = 19.5227278094
+        interface = R3 s0/0
+    [[NOTE 14]]
+        text = "f0/0"
+        x = -20.2819505297
+        y = 46.9990062864
+        interface = R2 f0/0
+    [[NOTE 15]]
+        text = "s0/0"
+        x = 72.8700796574
+        y = 18.7787039704
+        interface = R2 s0/0
+    [[NOTE 16]]
+        text = "f0/0"
+        x = 73.0
+        y = 22.0
+        interface = R1 f0/0
+    [[NOTE 17]]
+        text = "s0/1"
+        x = -8.70335928504
+        y = 50.0323748553
+        interface = R6 s0/1
+    [[NOTE 18]]
+        text = "s0/0"
+        x = -16.8653765938
+        y = -30.5223712299
+        interface = R6 s0/0
+    [[NOTE 19]]
+        text = "s0/1"
+        x = 65.703359285
+        y = -1.03237485526
+        interface = R5 s0/1
+    [[NOTE 20]]
+        text = "s0/0"
+        x = -40.9232153326
+        y = 29.4772721906
+        interface = R5 s0/0
+    [[NOTE 21]]
+        text = "s0/2"
+        x = -24.2194006128
+        y = -45.8702327519
+        interface = R5 s0/2
+    [[NOTE 22]]
+        text = "s0/2"
+        x = 42.2194006128
+        y = 61.8702327519
+        interface = R4 s0/2
+    [[NOTE 23]]
+        text = "s0/1"
+        x = 69.8653765938
+        y = 5.52237122993
+        interface = R4 s0/1
+    [[NOTE 24]]
+        text = "s0/0"
+        x = -49.8700796574
+        y = -4.77870397041
+        interface = R4 s0/0
+    [[SHAPE 1]]
+        type = rectangle
+        x = 74.0
+        y = -342.0
+        width = 243.0
+        height = 483.0
+        fill_color = "#aaaaff"
+        z = -1.0
+    [[SHAPE 2]]
+        type = ellipse
+        x = -511.0
+        y = -266.0
+        width = 329.0
+        height = 379.0
+        fill_color = "#55aaff"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 3]]
+        type = rectangle
+        x = -202.0
+        y = -343.0
+        width = 265.0
+        height = 483.0
+        fill_color = "#ffaa7f"
+        z = -2.0

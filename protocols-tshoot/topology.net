@@ -1,0 +1,368 @@
+autostart = False
+version = 0.8.4
+[127.0.0.1:7200]
+    udp = 10000
+    [[2691]]
+        image = c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R4]]
+        model = 2691
+        console = 2004
+        aux = 2504
+        cnfg = configs\R4.cfg
+        wic0/0 = WIC-2T
+        s0/0 = FR1 4
+        f0/0 = SW1 3
+        x = -53.2626273639
+        y = -323.301516084
+        z = 1.0
+        hx = 16.4393398282
+        hy = 17.0728534806
+    [[ROUTER R5]]
+        model = 2691
+        console = 2005
+        aux = 2505
+        cnfg = configs\R5.cfg
+        wic0/0 = WIC-2T
+        s0/0 = FR1 5
+        f0/0 = SW1 4
+        f0/1 = R6 f0/0
+        x = -48.0199866768
+        y = -147.698483916
+        z = 1.0
+        hx = 16.0857864376
+        hy = 16.71930009
+    [[ROUTER R6]]
+        model = 2691
+        console = 2006
+        aux = 2506
+        cnfg = configs\R6.cfg
+        wic0/0 = WIC-2T
+        s0/0 = FR1 6
+        f0/0 = R5 f0/1
+        x = -48.4823711807
+        y = 48.8573384845
+        z = 1.0
+        hx = 16.7928932188
+        hy = 17.0728534806
+    [[ROUTER R7]]
+        model = 2691
+        console = 2007
+        aux = 2507
+        cnfg = configs\R7.cfg
+        wic0/0 = WIC-2T
+        s0/0 = FR1 7
+        f0/0 = R8 f0/0
+        f0/1 = R8 f0/1
+        x = 339.244998545
+        y = -149.451286795
+        z = 1.0
+        hx = 18.5
+        hy = 17.0
+    [[ROUTER R1]]
+        model = 2691
+        console = 2001
+        aux = 2501
+        cnfg = configs\R1.cfg
+        f0/0 = R2 f0/0
+        f0/1 = R3 f0/0
+        x = -540.0
+        y = -147.0
+        z = 1.0
+        hx = 17.1464466094
+        hy = 16.71930009
+    [[ROUTER R2]]
+        model = 2691
+        console = 2002
+        aux = 2502
+        cnfg = configs\R2.cfg
+        f0/0 = R1 f0/0
+        f0/1 = SW1 1
+        x = -365.755001455
+        y = -259.548713205
+        z = 1.0
+        hx = 16.0857864376
+        hy = 16.71930009
+    [[ROUTER R3]]
+        model = 2691
+        console = 2003
+        aux = 2503
+        cnfg = configs\R3.cfg
+        f0/0 = R1 f0/1
+        f0/1 = SW1 2
+        x = -365.482371181
+        y = -42.8573384845
+        z = 1.0
+        hx = 15.5606601718
+        hy = 17.4264068712
+    [[ROUTER R8]]
+        model = 2691
+        console = 2008
+        aux = 2508
+        cnfg = configs\R8.cfg
+        f0/0 = R7 f0/0
+        f0/1 = R7 f0/1
+        x = 341.0
+        y = 39.0
+        z = 1.0
+        hx = 16.5
+        hy = 17.0
+    [[FRSW FR1]]
+        4:47 = 7:47
+        5:57 = 7:57
+        6:67 = 7:67
+        7:47 = 4:47
+        7:57 = 5:57
+        7:67 = 6:67
+        4 = R4 s0/0
+        5 = R5 s0/0
+        6 = R6 s0/0
+        7 = R7 s0/0
+        x = 185.5
+        y = -149.5
+        z = 1.0
+        hx = 4.64644660941
+        hy = 41.4680374315
+    [[ETHSW SW1]]
+        1 = access 1 R2 f0/1
+        2 = access 1 R3 f0/1
+        3 = access 1 R4 f0/0
+        4 = access 1 R5 f0/0
+        x = -235.5
+        y = -140.0
+        z = 1.0
+        hx = 7.05025253169
+        hy = 7.88046532517
+[GNS3-DATA]
+    configs = configs
+    m11 = 0.707106781187
+    m22 = 0.707106781187
+    [[NOTE 1]]
+        text = "R6 is not capable of running any dynamic routing protocol!"
+        x = -264.457936164
+        y = 326.325468532
+    [[NOTE 2]]
+        text = "Violet Spoke site"
+        x = -91.9238815543
+        y = 122.67871555
+    [[NOTE 3]]
+        text = "Blue Spoke site"
+        x = -83.43860018
+        y = -184.205627485
+    [[NOTE 4]]
+        text = "Orange Spoke site"
+        x = -97.5807358037
+        y = -383.609739779
+    [[NOTE 5]]
+        text = "DR Hub site"
+        x = 323.854905783
+        y = -209.661471607
+    [[NOTE 6]]
+        text = "Main Hub site"
+        x = -442.648845023
+        y = -335.526478659
+    [[NOTE 7]]
+        text = "EIGRP"
+        x = 438.406204336
+        y = -413.308224589
+        font = "MS Shell Dlg 2,14,-1,5,75,0,0,0,0,0"
+    [[NOTE 8]]
+        text = "OSPF"
+        x = -578.413347011
+        y = -411.894011027
+        font = "MS Shell Dlg 2,14,-1,5,75,0,0,0,0,0"
+    [[NOTE 9]]
+        text = "2"
+        x = 5.74665255504
+        y = 34.2040750624
+        interface = SW1 2
+    [[NOTE 10]]
+        text = "1"
+        x = 11.557743807
+        y = -27.5860934873
+        interface = SW1 1
+    [[NOTE 11]]
+        text = "4"
+        x = 73.3706658765
+        y = 11.3102641087
+        interface = SW1 4
+    [[NOTE 12]]
+        text = "3"
+        x = 70.6940891279
+        y = -25.1721267968
+        interface = SW1 3
+    [[NOTE 13]]
+        text = "7"
+        x = 65.2235431778
+        y = 18.8053096583
+        interface = FR1 7
+    [[NOTE 14]]
+        text = "6"
+        x = -29.881656932
+        y = 30.1074276316
+        interface = FR1 6
+    [[NOTE 15]]
+        text = "5"
+        x = -37.2622747987
+        y = 0.80700102026
+        interface = FR1 5
+    [[NOTE 16]]
+        text = "4"
+        x = -19.694515678
+        y = -24.7707795208
+        interface = FR1 4
+    [[NOTE 17]]
+        text = "f0/1"
+        x = -21.7212464852
+        y = -26.0835660634
+        interface = R8 f0/1
+    [[NOTE 18]]
+        text = "f0/0"
+        x = 47.2795645606
+        y = -24.9935116335
+        interface = R8 f0/0
+    [[NOTE 19]]
+        text = "f0/1"
+        x = 70.1069008356
+        y = -4.335803046
+        interface = R3 f0/1
+    [[NOTE 20]]
+        text = "f0/0"
+        x = -53.8155032999
+        y = -0.595562611964
+        interface = R3 f0/0
+    [[NOTE 21]]
+        text = "f0/1"
+        x = 68.7810909578
+        y = 23.1094340844
+        interface = R2 f0/1
+    [[NOTE 22]]
+        text = "f0/0"
+        x = -45.9917885175
+        y = 19.2613585984
+        interface = R2 f0/0
+    [[NOTE 23]]
+        text = "f0/1"
+        x = 24.073602261
+        y = 48.4742422684
+        interface = R1 f0/1
+    [[NOTE 24]]
+        text = "f0/0"
+        x = 26.6762943498
+        y = -35.0707561117
+        interface = R1 f0/0
+    [[NOTE 25]]
+        text = "f0/1"
+        x = -18.2803756064
+        y = 66.9034572036
+        interface = R7 f0/1
+    [[NOTE 26]]
+        text = "f0/0"
+        x = 46.7204354394
+        y = 65.9935116335
+        interface = R7 f0/0
+    [[NOTE 27]]
+        text = "s0/0"
+        x = -42.7235431778
+        y = 28.6946903417
+        interface = R7 s0/0
+    [[NOTE 28]]
+        text = "s0/0"
+        x = 66.4613467153
+        y = -11.1239319261
+        interface = R6 s0/0
+    [[NOTE 29]]
+        text = "f0/0"
+        x = -23.769157015
+        y = -32.9926042849
+        interface = R6 f0/0
+    [[NOTE 30]]
+        text = "f0/1"
+        x = 33.769157015
+        y = 61.9926042849
+        interface = R5 f0/1
+    [[NOTE 31]]
+        text = "f0/0"
+        x = -48.7112863101
+        y = -5.48362265264
+        interface = R5 f0/0
+    [[NOTE 32]]
+        text = "s0/0"
+        x = 72.7813044101
+        y = 17.8229412947
+        interface = R5 s0/0
+    [[NOTE 33]]
+        text = "f0/0"
+        x = -47.4765747066
+        y = 26.0906513448
+        interface = R4 f0/0
+    [[NOTE 34]]
+        text = "s0/0"
+        x = 69.7092343037
+        y = 18.2984311036
+        interface = R4 s0/0
+    [[SHAPE 1]]
+        type = ellipse
+        x = 277.185858225
+        y = -247.487373415
+        width = 200.0
+        height = 407.293505963
+        fill_color = "#ffffff"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 2]]
+        type = ellipse
+        x = -117.379725677
+        y = -8.48528137424
+        width = 200.0
+        height = 127.279220614
+        fill_color = "#ff55ff"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 3]]
+        type = ellipse
+        x = -117.379725677
+        y = -200.818325857
+        width = 200.0
+        height = 161.220346111
+        fill_color = "#5555ff"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 4]]
+        type = ellipse
+        x = -115.965512115
+        y = -350.724963469
+        width = 200.0
+        height = 118.793939239
+        fill_color = "#ffaa00"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 5]]
+        type = ellipse
+        x = -561.442784262
+        y = -371.938166904
+        width = 359.210244843
+        height = 480.832611207
+        fill_color = "#ffffff"
+        border_style = 2
+        z = -1.0
+    [[SHAPE 6]]
+        type = rectangle
+        x = 2.12132034356
+        y = -427.092495837
+        width = 533.865619796
+        height = 726.90577106
+        fill_color = "#00aa7f"
+        border_style = 0
+        z = -2.0
+    [[SHAPE 7]]
+        type = rectangle
+        x = -595.383909759
+        y = -427.092495837
+        width = 568.513852074
+        height = 726.90577106
+        fill_color = "#00aaff"
+        border_style = 0
+        z = -2.0

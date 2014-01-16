@@ -1,0 +1,62 @@
+autostart = False
+[127.0.0.1:7200]
+    workingdir = bgp-communities_working
+    udp = 10000
+    [[7200]]
+        image = D:\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.124-2.T.bin
+        ram = 128
+        idlepc = 0x606e95cc
+        ghostios = True
+    [[ROUTER EDGE1.AS2]]
+        console = 2005
+        slot1 = PA-8T
+        s1/0 = EDGE1.AS1 s1/0
+        s1/1 = R2.AS2 s1/0
+        cnfg = bgp-communities_configs\EDGE1.AS2.cfg
+        x = 66.0
+        y = -55.0
+    [[ROUTER EDGE1.AS1]]
+        console = 2004
+        slot1 = PA-8T
+        s1/0 = EDGE1.AS2 s1/0
+        cnfg = bgp-communities_configs\EDGE1.AS1.cfg
+        x = -231.0
+        y = -57.0
+    [[ROUTER R2.AS2]]
+        console = 2006
+        slot1 = PA-8T
+        s1/0 = EDGE1.AS2 s1/1
+        cnfg = bgp-communities_configs\R2.AS2.cfg
+        x = 63.0
+        y = 120.0
+        hx = 8.5
+        hy = 45.0
+[GNS3-DATA]
+    configs = bgp-communities_configs
+    workdir = bgp-communities_working
+    [[NOTE 1]]
+        text = s1/1
+        x = 36.6166362213
+        y = 61.8361637516
+        interface = EDGE1.AS2 s1/1
+    [[NOTE 2]]
+        text = s1/0
+        x = 72.9284295074
+        y = 19.6082397548
+        interface = EDGE1.AS1 s1/0
+    [[SHAPE 1]]
+        type = rectangle
+        x = 16.0
+        y = -120.0
+        width = 185.0
+        height = 330.0
+        fill_color = "#aaff7f"
+        z = -2.0
+    [[SHAPE 2]]
+        type = rectangle
+        x = -285.0
+        y = -118.0
+        width = 200.0
+        height = 156.0
+        fill_color = "#aaaaff"
+        z = -2.0

@@ -1,0 +1,106 @@
+CPE#
+*Mar  1 00:23:11.059: %DIALER-6-BIND: Interface Vi2 bound to profile Di0
+*Mar  1 00:23:11.063: Vi2 PPP: Using dialer call direction
+*Mar  1 00:23:11.063: Vi2 PPP: Treating connection as a callout
+*Mar  1 00:23:11.067: Vi2 PPP: Session handle[FF000004] Session id[0]
+*Mar  1 00:23:11.067: Vi2 PPP: Authorization required
+*Mar  1 00:23:11.067: Vi2 PPP: No remote authentication for call-out
+*Mar  1 00:23:11.159: %LINK-3-UPDOWN: Interface Virtual-Access2, changed state to up
+*Mar  1 00:23:13.087: Vi2 PPP: No authorization without authentication
+*Mar  1 00:23:13.087: Vi2 CHAP: I CHALLENGE id 1 len 24 from "LAC"
+*Mar  1 00:23:13.119: Vi2 CHAP: Using hostname from interface CHAP
+*Mar  1 00:23:13.123: Vi2 CHAP: Using password from interface CHAP
+*Mar  1 00:23:13.123: Vi2 CHAP: O RESPONSE id 1 len 36 from "cpe1@dsltest.cz"
+*Mar  1 00:23:13.811: Vi2 CHAP: I FAILURE id 1 len 25 msg is "Authentication failed"
+*Mar  1 00:23:14.003: %DIALER-6-UNBIND: Interface Vi2 unbound from profile Di0
+*Mar  1 00:23:14.011: %LINK-3-UPDOWN: Interface Virtual-Access2, changed state to down
+
+CPE#sh ip int brie
+Interface                  IP-Address      OK? Method Status                Protocol
+FastEthernet0/0            unassigned      YES manual up                    up
+FastEthernet0/1            unassigned      YES unset  administratively down down
+Virtual-Access1            unassigned      YES unset  up                    up
+Virtual-Access2            unassigned      YES unset  down                  down
+Dialer0                    unassigned      YES manual up                    up
+
+
+*Mar  1 00:23:36.231: %DIALER-6-BIND: Interface Vi2 bound to profile Di0
+*Mar  1 00:23:36.235: Vi2 PPP: Using dialer call direction
+*Mar  1 00:23:36.235: Vi2 PPP: Treating connection as a callout
+*Mar  1 00:23:36.235: Vi2 PPP: Session handle[1D000008] Session id[0]
+*Mar  1 00:23:36.239: Vi2 PPP: Authorization required
+*Mar  1 00:23:36.239: Vi2 PPP: No remote authentication for call-out
+*Mar  1 00:23:36.243: %LINK-3-UPDOWN: Interface Virtual-Access2, changed state to up
+*Mar  1 00:23:38.203: Vi2 PPP: No authorization without authentication
+*Mar  1 00:23:38.283: Vi2 CHAP: I CHALLENGE id 1 len 24 from "LAC"
+*Mar  1 00:23:38.287: Vi2 CHAP: Using hostname from interface CHAP
+*Mar  1 00:23:38.291: Vi2 CHAP: Using password from interface CHAP
+*Mar  1 00:23:38.291: Vi2 CHAP: O RESPONSE id 1 len 36 from "cpe1@dsltest.cz"
+*Mar  1 00:23:38.895: Vi2 CHAP: I FAILURE id 1 len 25 msg is "Authentication failed"		<---- BAD AUTH!
+*Mar  1 00:23:39.087: %DIALER-6-UNBIND: Interface Vi2 unbound from profile Di0
+*Mar  1 00:23:39.091: %LINK-3-UPDOWN: Interface Virtual-Access2, changed state to down
+
+
+
+
+NOW OK!!!
+
+CPE#
+*Mar  1 00:25:41.835: %DIALER-6-BIND: Interface Vi2 bound to profile Di0
+*Mar  1 00:25:41.839: Vi2 PPP: Using dialer call direction
+*Mar  1 00:25:41.839: Vi2 PPP: Treating connection as a callout
+*Mar  1 00:25:41.839: Vi2 PPP: Session handle[7E000017] Session id[0]
+*Mar  1 00:25:41.843: Vi2 PPP: Authorization required
+*Mar  1 00:25:41.843: Vi2 PPP: No remote authentication for call-out
+*Mar  1 00:25:41.847: %LINK-3-UPDOWN: Interface Virtual-Access2, changed state to up
+*Mar  1 00:25:43.823: Vi2 PPP: No authorization without authentication
+*Mar  1 00:25:43.887: Vi2 CHAP: I CHALLENGE id 1 len 24 from "LAC"
+*Mar  1 00:25:43.891: Vi2 CHAP: Using hostname from interface CHAP
+*Mar  1 00:25:43.891: Vi2 CHAP: Using password from interface CHAP
+*Mar  1 00:25:43.891: Vi2 CHAP: O RESPONSE id 1 len 36 from "cpe1@dsltest.cz"
+*Mar  1 00:25:44.963: Vi2 CHAP: I SUCCESS id 1 len 4
+*Mar  1 00:25:46.043: %LINEPROTO-5-UPDOWN: Line protocol on Interface Virtual-Access2, changed state to up
+
+
+CPE#sh ip int brie
+Interface                  IP-Address      OK? Method Status                Protocol
+FastEthernet0/0            unassigned      YES manual up                    up
+FastEthernet0/1            unassigned      YES unset  administratively down down
+Virtual-Access1            unassigned      YES unset  up                    up
+Virtual-Access2            unassigned      YES unset  up                    up
+Dialer0                    172.16.0.0      YES IPCP   up                    up	<------- Di0 has obtained IP address from LNS Pool
+
+
+
+--------------------------------------------------------------------------------
+
+
+LNS TO LAC L2TP Tunnel
+----------------------
+
+LNS#sh vpdn tun l2tp
+
+L2TP Tunnel Information Total tunnels 1 sessions 1
+
+LocID RemID Remote Name   State  Remote Address  Port  Sessions L2TP Class/
+                                                                VPDN Group
+21811 39481 LAC           est    200.0.0.2       1701  1        1     
+
+
+
+LNS TO CPE PPP Session
+----------------------
+
+LNS#sh vpdn session
+
+%No active L2F tunnels
+
+L2TP Session Information Total tunnels 1 sessions 1
+
+LocID      RemID      TunID      Username, Intf/      State  Last Chg Uniq ID
+                                 Vcid, Circuit                        
+8          8          21811      cpe1@dsltest., Vi2.1 est    00:01:02 7
+
+%No active PPTP tunnels
+
+

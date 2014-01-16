@@ -1,0 +1,56 @@
+autostart = False
+version = 0.8.3
+[127.0.0.1:7200]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10000
+    [[2691]]
+        image = D:\tomgro\c2691-adventerprisek9-mz.124-5a.image
+        idlepc = 0x60aaf1b8
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R4]]
+        model = 2691
+        console = 2004
+        aux = 2504
+        cnfg = configs\R4.cfg
+        f0/0 = R2 f0/0
+        x = -34.0
+        y = 77.0
+        z = 1.0
+        hx = 75.5
+        hy = 10.0
+    [[ROUTER R1]]
+        model = 2691
+        console = 2001
+        aux = 2501
+        cnfg = configs\R1.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R2 s0/0
+        f0/0 = R3 f0/0
+        x = -362.0
+        y = -90.0
+        z = 1.0
+    [[ROUTER R2]]
+        model = 2691
+        console = 2002
+        aux = 2502
+        cnfg = configs\R2.cfg
+        wic0/0 = WIC-2T
+        s0/0 = R1 s0/0
+        f0/0 = R4 f0/0
+        x = -37.0
+        y = -95.0
+        z = 1.0
+    [[ROUTER R3]]
+        model = 2691
+        console = 2003
+        aux = 2503
+        cnfg = configs\R3.cfg
+        f0/0 = R1 f0/0
+        x = -362.0
+        y = 77.0
+        z = 1.0
+        hx = -32.5
+        hy = 10.0
+[GNS3-DATA]
+    configs = configs

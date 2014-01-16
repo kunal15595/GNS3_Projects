@@ -1,0 +1,161 @@
+autostart = False
+[127.0.0.1:7202]
+    workingdir = .
+    udp = 10200
+    [[7200]]
+        image = D:\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.150-1.M.bin
+        idlepc = 0x60643eb0
+        ghostios = True
+    [[ROUTER CE2.AS2]]
+        console = 2012
+        slot1 = PA-POS-OC3
+        p1/0 = PE2 p2/0
+        cnfg = CE2.AS2.cfg
+        x = 277.0
+        y = -238.0
+    [[ROUTER CE1.AS2]]
+        console = 2011
+        slot1 = PA-POS-OC3
+        p1/0 = PE1 p2/0
+        cnfg = CE1.AS2.cfg
+        x = -373.0
+        y = -243.0
+[127.0.0.1:7203]
+    workingdir = .
+    udp = 10300
+    [[7200]]
+        image = D:\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.124-2.T.bin
+        ram = 128
+        idlepc = 0x606e9e60
+        ghostios = True
+    [[ROUTER CE2.AS1]]
+        console = 2016
+        slot1 = PA-POS-OC3
+        p1/0 = PE2 p3/0
+        cnfg = CE2.AS1.cfg
+        x = 283.0
+        y = -63.0
+    [[ROUTER PE1]]
+        console = 2019
+        slot1 = PA-POS-OC3
+        p1/0 = PE2 p1/0
+        slot2 = PA-POS-OC3
+        p2/0 = CE1.AS2 p1/0
+        slot3 = PA-POS-OC3
+        p3/0 = CE1.AS1 p1/0
+        cnfg = PE1.cfg
+        x = -157.0
+        y = -138.0
+    [[ROUTER CE1.AS1]]
+        console = 2015
+        slot1 = PA-POS-OC3
+        p1/0 = PE1 p3/0
+        cnfg = CE1.AS1.cfg
+        x = -371.0
+        y = -65.0
+[127.0.0.1:7200]
+    workingdir = .
+    udp = 10000
+    [[7200]]
+        image = D:\dynamips-0.2.8-RC2-cygwin\c7200-advipservicesk9-mz.124-2.T.bin
+        ram = 128
+        idlepc = 0x606e9e60
+        ghostios = True
+    [[ROUTER PE2]]
+        console = 2017
+        slot1 = PA-POS-OC3
+        p1/0 = PE1 p1/0
+        slot2 = PA-POS-OC3
+        p2/0 = CE2.AS2 p1/0
+        slot3 = PA-POS-OC3
+        p3/0 = CE2.AS1 p1/0
+        cnfg = PE2.cfg
+        x = 92.0
+        y = -138.0
+[GNS3-DATA]
+    configs = .
+    workdir = .
+    [[NOTE 1]]
+        text = MPLS VPN AS1
+        x = -44.0
+        y = 14.0
+    [[NOTE 2]]
+        text = MPLS AREA
+        x = -52.0
+        y = -196.0
+    [[NOTE 3]]
+        text = MPLS VPN AS2
+        x = -42.0
+        y = -306.0
+    [[NOTE 4]]
+        text = p1/0
+        x = -5.23655270105
+        y = 11.3904434379
+        interface = CE2.AS1 p1/0
+    [[NOTE 5]]
+        text = p1/0
+        x = 70.430826397
+        y = 7.89563063303
+        interface = CE1.AS1 p1/0
+    [[NOTE 6]]
+        text = p1/0
+        x = 69.7658012007
+        y = 37.7567719432
+        interface = CE1.AS2 p1/0
+    [[NOTE 7]]
+        text = p3/0
+        x = 70.236552701
+        y = 36.6095565621
+        interface = PE2 p3/0
+    [[NOTE 8]]
+        text = p1/0
+        x = -6.99659778761
+        y = 21.4783052462
+        interface = PE2 p1/0
+    [[NOTE 9]]
+        text = p2/0
+        x = 70.1510843043
+        y = 7.1744499255
+        interface = PE2 p2/0
+    [[NOTE 10]]
+        text = p2/0
+        x = -3.76580120072
+        y = 6.24322805683
+        interface = PE1 p2/0
+    [[NOTE 11]]
+        text = p3/0
+        x = -4.43082639697
+        y = 36.104369367
+        interface = PE1 p3/0
+    [[NOTE 12]]
+        text = p1/0
+        x = 72.9965977876
+        y = 22.5216947538
+        interface = PE1 p1/0
+    [[NOTE 13]]
+        text = p1/0
+        x = -4.15108430434
+        y = 36.8255500745
+        interface = CE2.AS2 p1/0
+    [[SHAPE 1]]
+        type = rectangle
+        x = -342.0
+        y = -277.0
+        width = 662.0
+        height = 7.0
+        fill_color = "#00ff00"
+    [[SHAPE 2]]
+        type = rectangle
+        x = -347.0
+        y = -3.0
+        width = 666.0
+        height = 8.0
+        fill_color = "#ffaa7f"
+    [[SHAPE 3]]
+        type = rectangle
+        x = -200.0
+        y = -202.0
+        width = 392.0
+        height = 138.0
+        fill_color = "#aaffff"
+        z = -2.0

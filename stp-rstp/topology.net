@@ -1,0 +1,259 @@
+autostart = False
+version = 0.8.4
+[qemu 127.0.0.1:10525]
+    workingdir = qemu-flash-drives
+    udp = 40000
+    qemupath = C:\Program Files\GNS3\Qemu\qemu.exe
+    qemuimgpath = C:\Program Files\GNS3\Qemu\qemu-img.exe
+    [[QemuDevice]]
+        image = C:\Users\xx\GNS3\Images\linux-microcore-4.0.2-clean.img
+        ram = 128
+    [[QEMU linux-pc_5]]
+        e0 = SW2 f1/1
+        x = -339.5
+        y = -303.5
+        z = 1.0
+    [[QEMU linux-pc_4]]
+        e0 = SW1 f1/1
+        x = 217.5
+        y = 45.5
+        z = 1.0
+        hx = -6.0
+        hy = 56.0
+    [[QEMU linux-pc_3]]
+        e0 = SW3 f1/0
+        x = -117.5
+        y = 174.5
+        z = 1.0
+        hx = -3.75
+        hy = 54.75
+    [[QEMU linux-pc_2]]
+        e0 = SW1 f1/0
+        x = 262.5
+        y = -154.5
+        z = 1.0
+    [[QEMU linux-pc]]
+        e0 = SW2 f1/0
+        x = -405.5
+        y = -157.5
+        z = 1.0
+        hx = 2.0
+        hy = -22.0
+[127.0.0.1:7201]
+    workingdir = c:\users\xx\appdata\local\temp\GNS3_etztvk\working
+    udp = 10100
+    [[2691]]
+        image = C:\Users\xx\GNS3\Images\c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER SW1]]
+        model = 2691
+        console = 2003
+        aux = 2503
+        slot1 = NM-16ESW
+        f1/0 = linux-pc_2 e0
+        f1/1 = linux-pc_4 e0
+        f1/10 = SW2 f1/10
+        f1/14 = SW3 f1/15
+        f1/15 = SW2 f1/15
+        cnfg = configs\SW1.cfg
+        symbol = ethernet_switch
+        x = 33.0
+        y = -141.0
+        z = 1.0
+        hx = 11.75
+        hy = 10.75
+    [[ROUTER SW3]]
+        model = 2691
+        console = 2004
+        aux = 2504
+        slot1 = NM-16ESW
+        f1/0 = linux-pc_3 e0
+        f1/14 = SW2 f1/14
+        f1/15 = SW1 f1/14
+        cnfg = configs\SW3.cfg
+        symbol = ethernet_switch
+        x = -119.0
+        y = 23.0
+        z = 1.0
+        hx = 11.25
+        hy = 11.0
+    [[ROUTER SW2]]
+        model = 2691
+        console = 2002
+        aux = 2502
+        slot1 = NM-16ESW
+        f1/0 = linux-pc e0
+        f1/1 = linux-pc_5 e0
+        f1/10 = SW1 f1/10
+        f1/14 = SW3 f1/14
+        f1/15 = SW1 f1/15
+        cnfg = configs\SW2.cfg
+        symbol = ethernet_switch
+        x = -243.0
+        y = -143.0
+        z = 1.0
+        hx = 9.75
+        hy = 11.0
+[GNS3-DATA]
+    configs = configs
+    m11 = 1.0
+    m22 = 1.0
+    [[NOTE 1]]
+        text = "> Deploy as single VLAN topology\n> Add VLANs into topology\n> Add redundant path SW1 - SW3\n> Add reduntant link SW1 - SW2\n> Set SW1 - SW2 as Etherchannel\n> Verify STP/RSTP/PVST failover\n> Tune STP/RSTP"
+        x = 136.0
+        y = -394.0
+    [[NOTE 2]]
+        text = "Etherchannel"
+        x = -116.0
+        y = -237.0
+    [[NOTE 3]]
+        text = "VLAN # 10"
+        x = -432.0
+        y = -46.0
+    [[NOTE 4]]
+        text = "VLAN # 100"
+        x = 273.0
+        y = 23.0
+    [[NOTE 5]]
+        text = "VLAN # 100"
+        x = -27.0
+        y = 151.0
+    [[NOTE 6]]
+        text = "VLAN # 10"
+        x = 235.0
+        y = -219.0
+    [[NOTE 7]]
+        text = "e0"
+        x = 31.3802725534
+        y = 63.0269697676
+        interface = linux-pc_5 e0
+    [[NOTE 8]]
+        text = "e0"
+        x = -17.3811003979
+        y = -2.12104727043
+        interface = linux-pc_4 e0
+    [[NOTE 9]]
+        text = "e0"
+        x = 38.8636213383
+        y = -23.7483472099
+        interface = linux-pc_3 e0
+    [[NOTE 10]]
+        text = "e0"
+        x = -24.5
+        y = 31.5
+        interface = linux-pc_2 e0
+    [[NOTE 11]]
+        text = "e0"
+        x = 72.9990872914
+        y = 30.8021092888
+        interface = linux-pc e0
+    [[NOTE 12]]
+        text = "f1/15"
+        x = 71.1905866064
+        y = -24.5872118648
+        interface = SW3 f1/15
+    [[NOTE 13]]
+        text = "f1/0"
+        x = 35.1363786617
+        y = 55.9983472099
+        interface = SW3 f1/0
+    [[NOTE 14]]
+        text = "f1/14"
+        x = -40.4381793314
+        y = -25.2962723308
+        interface = SW3 f1/14
+    [[NOTE 15]]
+        text = "f1/10"
+        x = -36.212718909
+        y = -17.0397161928
+        interface = SW1 f1/10
+    [[NOTE 16]]
+        text = "f1/14"
+        x = 1.3094133936
+        y = 48.3372118648
+        interface = SW1 f1/14
+    [[NOTE 17]]
+        text = "f1/1"
+        x = 65.1311003979
+        y = 35.8710472704
+        interface = SW1 f1/1
+    [[NOTE 18]]
+        text = "f1/0"
+        x = 75.5
+        y = -7.75
+        interface = SW1 f1/0
+    [[NOTE 19]]
+        text = "f1/15"
+        x = -42.7489498418
+        y = 16.4601525374
+        interface = SW1 f1/15
+    [[NOTE 20]]
+        text = "f1/10"
+        x = 75.0351807746
+        y = -17.4600212676
+        interface = SW2 f1/10
+    [[NOTE 21]]
+        text = "f1/1"
+        x = 15.8697274466
+        y = -45.7769697676
+        interface = SW2 f1/1
+    [[NOTE 22]]
+        text = "f1/0"
+        x = -38.9992698332
+        y = 21.508312569
+        interface = SW2 f1/0
+    [[NOTE 23]]
+        text = "f1/14"
+        x = 16.9381793314
+        y = 53.0462723308
+        interface = SW2 f1/14
+    [[NOTE 24]]
+        text = "f1/15"
+        x = 75.4989498418
+        y = 16.2898474626
+        interface = SW2 f1/15
+    [[SHAPE 1]]
+        type = ellipse
+        x = -96.0
+        y = -211.0
+        width = 48.0
+        height = 115.0
+        fill_color = "#5500ff"
+        border_color = "#ffffff"
+        border_style = 0
+        z = -1.0
+    [[SHAPE 2]]
+        type = rectangle
+        x = -139.0
+        y = 142.0
+        width = 202.0
+        height = 122.0
+        fill_color = "#aaffff"
+        z = -1.0
+    [[SHAPE 3]]
+        type = rectangle
+        x = -438.0
+        y = -193.0
+        width = 143.0
+        height = 176.0
+        fill_color = "#aaff00"
+        border_color = "#000000"
+        z = -1.0
+    [[SHAPE 4]]
+        type = rectangle
+        x = 231.0
+        y = -223.0
+        width = 131.0
+        height = 176.0
+        fill_color = "#aaff00"
+        z = -1.0
+    [[SHAPE 5]]
+        type = rectangle
+        x = 189.0
+        y = 18.0
+        width = 171.0
+        height = 176.0
+        fill_color = "#aaffff"
+        z = -1.0
