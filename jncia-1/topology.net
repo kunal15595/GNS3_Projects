@@ -1,0 +1,63 @@
+autostart = False
+version = 0.8.6
+[127.0.0.1:7200]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 10000
+    [[2691]]
+        image = C:\Users\xx\GNS3\Images\c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+    [[ROUTER R4]]
+        model = 2691
+        console = 2003
+        aux = 2503
+        cnfg = configs\R4.cfg
+        f0/0 = JR1 e2
+        x = -143.0
+        y = 161.0
+        z = 1.0
+        hx = 16.5
+        hy = 16.0
+[vbox 127.0.0.1:11525]
+    workingdir = C:\Users\xx\AppData\Local\Temp
+    udp = 20900
+    [[VBoxDevice]]
+        image = JunOS Olive
+        nics = 4
+        first_nic_managed = False
+        headless_mode = True
+        console_support = True
+    [[VBOX JR3]]
+        image = JunOS Olive 3
+        e0 = JR2 e0
+        e1 = JR1 e0
+        symbol = router
+        x = -346.5
+        y = -243.5
+        z = 1.0
+        hx = 9.5
+        hy = 17.0
+    [[VBOX JR2]]
+        image = JunOS Olive 2
+        e0 = JR3 e0
+        e1 = JR1 e1
+        e3 = JR1 e3
+        symbol = router
+        x = 73.5
+        y = -242.5
+        z = 1.0
+        hx = 12.5
+        hy = 18.0
+    [[VBOX JR1]]
+        e0 = JR3 e1
+        e1 = JR2 e1
+        e2 = R4 f0/0
+        e3 = JR2 e3
+        symbol = router
+        x = -142.5
+        y = -55.5
+        z = 1.0
+        hx = 12.5
+        hy = 18.0
+[GNS3-DATA]
+    configs = configs

@@ -1,0 +1,80 @@
+autostart = False
+version = 0.8.6
+[127.0.0.1:7200]
+    workingdir = c:\users\xx\appdata\local\temp\GNS3_hq3rrj\working
+    udp = 10000
+    [[2691]]
+        image = C:\Users\xx\GNS3\Images\c2691-adventerprisek9_sna-mz.124-13b.image
+        idlepc = 0x60b70574
+        sparsemem = True
+        ghostios = True
+    [[ROUTER R4]]
+        model = 2691
+        console = 2005
+        aux = 2505
+        f0/0 = R2 f0/0
+        f0/1 = R3 f0/1
+        cnfg = configs\R4.cfg
+        x = -84.0
+        y = -90.0
+        z = 1.0
+    [[ROUTER R1]]
+        model = 2691
+        console = 2001
+        aux = 2501
+        f0/0 = R3 f0/0
+        cnfg = configs\R1.cfg
+        x = -393.0
+        y = 38.0
+        z = 1.0
+    [[ROUTER R2]]
+        model = 2691
+        console = 2002
+        aux = 2502
+        f0/0 = R4 f0/0
+        cnfg = configs\R2.cfg
+        x = 40.0
+        y = 41.0
+        z = 1.0
+    [[ROUTER R3]]
+        model = 2691
+        console = 2004
+        aux = 2504
+        f0/0 = R1 f0/0
+        f0/1 = R4 f0/1
+        cnfg = configs\R3.cfg
+        x = -275.0
+        y = -90.0
+        z = 1.0
+[GNS3-DATA]
+    configs = configs
+    [[NOTE 1]]
+        text = "f0/1"
+        x = -6.98048304348
+        y = 20.7506099049
+        interface = R4 f0/1
+    [[NOTE 2]]
+        text = "f0/0"
+        x = 61.0552599938
+        y = 50.5114430831
+        interface = R4 f0/0
+    [[NOTE 3]]
+        text = "f0/1"
+        x = 72.9804830435
+        y = 23.2493900951
+        interface = R3 f0/1
+    [[NOTE 4]]
+        text = "f0/0"
+        x = 5.88788741043
+        y = 51.4097492497
+        interface = R3 f0/0
+    [[NOTE 5]]
+        text = "f0/0"
+        x = 4.94474000622
+        y = -6.51144308311
+        interface = R2 f0/0
+    [[NOTE 6]]
+        text = "f0/0"
+        x = 60.1121125896
+        y = -7.4097492497
+        interface = R1 f0/0
